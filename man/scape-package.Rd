@@ -10,7 +10,8 @@
 \details{
   \emph{Import model results:}
   \tabular{ll}{
-    \code{\link{importCol}} \tab Coleraine model results
+    \code{\link{importADCAM}} \tab ADCAM model results\cr
+    \code{\link{importCol}}   \tab Coleraine model results
   }
   \emph{Plot model fit to data:}
   \tabular{ll}{
@@ -44,7 +45,8 @@
   \emph{Examples:}
   \tabular{ll}{
     \code{\link{x.cod}}, \code{\link{x.ling}}, \code{\link{x.oreo}},
-    \code{\link{x.sbw}} \tab cod, ling, oreo, and whiting assessments\cr
+    \code{\link{x.saithe}}, \code{\link{x.sbw}} \tab cod, ling, oreo,
+    and whiting assessments\cr
     \code{\link{xmcmc}}, \code{\link{xproj}} \tab MCMC results
   }
 }
@@ -76,5 +78,3 @@
   The \pkg{plotMCMC} package can be used to diagnose the results of MCMC
   analysis.
 }
-% Graphics
-\keyword{hplot}

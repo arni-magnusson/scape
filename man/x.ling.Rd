@@ -83,4 +83,3 @@ plotIndex(x.ling, "s")
 plotN(x.ling)
 plotSel(x.ling)
 }
-\keyword{datasets}

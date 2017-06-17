@@ -67,6 +67,3 @@ xmcmc <- importMCMC(dir, pretty.labels=TRUE,
                                "sSleft","sSfull","logq"))
 }
 }
-% Programming
-\keyword{file}
-\keyword{interface}

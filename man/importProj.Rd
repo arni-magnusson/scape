@@ -59,6 +59,3 @@ dir <- system.file("example/mcmc", package="scape")
 xproj <- importProj(dir)
 }
 }
-% Programming
-\keyword{file}
-\keyword{interface}

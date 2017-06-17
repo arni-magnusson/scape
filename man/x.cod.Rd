@@ -69,8 +69,9 @@
 \seealso{
   \code{\link{importCol}} was used to import the fitted model.
 
-  \code{x.cod}, \code{\link{x.ling}}, \code{\link{x.oreo}}, and
-  \code{\link{x.sbw}} are fitted \code{scape} models to explore.
+  \code{x.cod}, \code{\link{x.ling}}, \code{\link{x.oreo}},
+  \code{\link{x.saithe}}, and \code{\link{x.sbw}} are fitted
+  \code{scape} models to explore.
 
   \code{\link{xmcmc}} and \code{\link{xproj}} are MCMC results and
   projections for the \code{x.cod} model run.
@@ -85,4 +86,3 @@ plotIndex(x.cod, "s")
 plotN(x.cod)
 plotSel(x.cod)
 }
-\keyword{datasets}

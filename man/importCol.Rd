@@ -2,8 +2,8 @@
 \alias{importCol}
 \title{Import Coleraine Model Results}
 \description{
-  Import Coleraine model results from .res file, and rearrange into a
-  standard format suitable for plotting.
+  Import Coleraine model results from \file{.res} file, and rearrange
+  into a standard format suitable for plotting.
 }
 \usage{
 importCol(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
@@ -64,6 +64,8 @@ importCol(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
   \code{\link{x.cod}}, \code{\link{x.ling}}, \code{\link{x.oreo}}, and
   \code{\link{x.sbw}} were created using \code{importCol}.
 
+  \code{\link{importADCAM}} imports ADCAM model results.
+
   \code{\link{scape-package}} gives an overview of the package.
 }
 \examples{
@@ -72,6 +74,3 @@ path <- system.file("example/cod.res", package="scape")
 x.cod <- importCol(path, Dev=TRUE, Survey=TRUE, CAc=TRUE, CAs=TRUE)
 }
 }
-% Programming
-\keyword{file}
-\keyword{interface}

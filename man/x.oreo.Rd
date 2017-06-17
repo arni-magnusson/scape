@@ -87,4 +87,3 @@ plotLA(x.oreo)
 plotN(x.oreo)
 plotSel(x.oreo)
 }
-\keyword{datasets}

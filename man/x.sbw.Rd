@@ -83,4 +83,3 @@ plotIndex(x.sbw, "s")
 plotN(x.sbw)
 plotSel(x.sbw)
 }
-\keyword{datasets}
