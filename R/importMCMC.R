@@ -1,4 +1,5 @@
-importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE, l.choose=NULL, p.choose=NULL)
+importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
+                       l.choose=NULL, p.choose=NULL)
 {
   ## 1  Define functions
   prettyL <- function(l)
@@ -29,7 +30,8 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE, l.choos
     p <- gsub("surveySfulldeltaest", "sSdelta",  p)
     p <- gsub("log_surveyvarL",      "sSleft",   p)
     p <- gsub("log_surveyvarR",      "sSright",  p)
-    p <- if(!any(grep("_2",p))) gsub("_1","",p) else p  # remove _1 if no _2 exist
+    ## Remove _1 if _2 does not exist
+    p <- if(!any(grep("_2",p))) gsub("_1","",p) else p
     return(p)
   }
 
@@ -97,9 +99,12 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE, l.choos
   }
 
   ## 2  Verify that files exist
-  files <- paste(dir, c("mcmclike.out","params.pst","spawbiom.pst","recruits.pst"), sep="/")
+  files <- paste(dir,
+                 c("mcmclike.out","params.pst","spawbiom.pst","recruits.pst"),
+                 sep="/")
   sapply(files, function(f)
-         if(!file.exists(f)) stop("File ",f," does not exist. Please check the 'dir' argument."))
+         if(!file.exists(f))
+           stop("File ",f," does not exist. Please check the 'dir' argument."))
 
   ## 3  Parse files
   if(!quiet) cat("\nParsing files in directory ", dir, ":\n\n", sep="")

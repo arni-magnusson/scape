@@ -1,4 +1,5 @@
-estSigmaI <- function(model, what="s", series=NULL, init=NULL, FUN=mean, p=1, digits=2)
+estSigmaI <- function(model, what="s", series=NULL, init=NULL, FUN=mean, p=1,
+                      digits=2)
 {
   ## 1  Parse args
   if(class(model) != "scape")
@@ -14,12 +15,14 @@ estSigmaI <- function(model, what="s", series=NULL, init=NULL, FUN=mean, p=1, di
   if(length(series) > 1)
   {
     output <- lapply(series, function(s)
-                     estSigmaI(model=model, what=what, series=s, init=init, FUN=FUN, p=p, digits=digits))
+                     estSigmaI(model=model, what=what, series=s, init=init,
+                               FUN=FUN, p=p, digits=digits))
     names(output) <- series
   }
   else
   {
-    ok.series <- x$Series %in% series; if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+    ok.series <- x$Series %in% series
+    if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
     x <- x[!is.na(x$Obs) & ok.series,]
 
     ## 3  Calculate sigmahat

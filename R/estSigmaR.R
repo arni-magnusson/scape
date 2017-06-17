@@ -4,7 +4,7 @@ estSigmaR <- function(model, digits=2)
   if(class(model) != "scape")
     stop("The 'model' argument should be a scape object, not ", class(model))
   if(is.null(model$Dev))
-    stop("Element 'Dev' not found; if rec devs were estimated, make sure they were correctly imported")
+    stop("Element 'Dev' not found")
 
   ## 2  Calculate sigmaR
   ss <- sapply(model$Dev[c("Initial","Annual")], function(x) sum(x^2))

@@ -9,7 +9,8 @@ estN.int <- function(P, Phat)
 
 
 
-estN <- function(model, what="CAc", series=NULL, init=NULL, FUN=mean, ceiling=Inf, digits=0)
+estN <- function(model, what="CAc", series=NULL, init=NULL, FUN=mean,
+                 ceiling=Inf, digits=0)
 {
   ## 1  Parse args
   if(class(model) != "scape")
@@ -26,12 +27,14 @@ estN <- function(model, what="CAc", series=NULL, init=NULL, FUN=mean, ceiling=In
   if(length(series) > 1)
   {
     output <- lapply(series, function(s)
-                     estN(model=model, what=what, series=s, init=init, FUN=FUN, ceiling=ceiling, digits=digits))
+                     estN(model=model, what=what, series=s, init=init, FUN=FUN,
+                          ceiling=ceiling, digits=digits))
     names(output) <- series
   }
   else
   {
-    ok.series <- x$Series %in% series; if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+    ok.series <- x$Series %in% series
+    if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
     x <- x[!is.na(x$Obs) & ok.series,]
 
     ## 3  Calculate nhat

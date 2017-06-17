@@ -13,12 +13,14 @@ getN <- function(model, what="CAc", series=NULL, digits=NULL)
     series <- unique(x$Series)
   if(length(series) > 1)
   {
-    output <- lapply(series, function(s) getN(model=model, what=what, series=s, digits=digits))
+    output <- lapply(series, function(s)
+                     getN(model=model, what=what, series=s, digits=digits))
     names(output) <- series
   }
   else
   {
-    ok.series <- x$Series %in% series; if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+    ok.series <- x$Series %in% series
+    if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
     x <- x[!is.na(x$Obs) & ok.series,]
 
     ## 3  Create output
