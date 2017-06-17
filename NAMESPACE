@@ -1,0 +1,10 @@
+export(importCol, importMCMC, importProj)
+export(plotB, plotCA, plotCL, plotIndex, plotLA, plotN, plotSel)
+export(estN, estN.int, estSigmaI, estSigmaR, getN, getSigmaI, getSigmaR,
+       iterate)
+
+importFrom(coda, mcmc)
+importFrom(lattice, panel.abline, panel.barchart, panel.grid, panel.lines,
+           panel.points, panel.superpose, panel.superpose.2, panel.xyplot,
+           strip.custom, xyplot)
+import(Hmisc)
