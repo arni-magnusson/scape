@@ -30,5 +30,5 @@ getSigmaI <- function(model, what="s", series=NULL, digits=NULL)
       output <- round(output, digits=digits)
   }
 
-  return(output)
+  output
 }

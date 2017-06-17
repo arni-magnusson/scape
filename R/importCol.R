@@ -18,7 +18,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     else
       as.numeric(scan(file, what="", skip=line, nlines=1, quiet=TRUE))
     if(!quiet) cat("vector...")
-    return(v)
+    v
   }
 
   readMatrix <- function(keyword, nrow, header=FALSE,
@@ -38,7 +38,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                 upper=m[seq(1,nrow(m)-1,by=2),],
                 lower=m[seq(2,nrow(m),by=2),], m)
     if(!quiet) cat("matrix...")
-    return(m)
+    m
   }
 
   getN <- function(sexes, years, ages)
@@ -66,7 +66,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                       N=as.vector(t(rbind(Nf,Nm))), ...)
     }
     if(!quiet) cat("OK\n")
-    return(N)
+    N
   }
 
   getB <- function(years, gears)
@@ -80,7 +80,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     names(B) <- if(ngears==1) c("Year", "VB", "SB", "Y")
                 else c("Year", paste("VB",gears,sep="."), "SB", "Y")
     if(!quiet) cat("OK\n")
-    return(B)
+    B
   }
 
   getSel <- function(gears, surveys, years, sexes, ages)
@@ -115,7 +115,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                       Age=rep(ages,(ngears+nsurveys+1)*nsexes),
                       P=c(t(com),t(srv),mat), ...)
     if(!quiet) cat("OK\n")
-    return(Sel)
+    Sel
   }
 
   getDev <- function(ages, years)
@@ -130,7 +130,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     Dev$Annual <- readVector("log_RecDev", same.line=TRUE)
     names(Dev$Annual) <- years[-length(years)]      # exclude last year
     if(!quiet) cat("OK\n")
-    return(Dev)
+    Dev
   }
 
   getCPUE <- function(gears, years)
@@ -154,7 +154,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                        Year=as.integer(CPUE$Year), Obs=CPUE$Obs, CV=CPUE$CV,
                        Fit=CPUE$Fit, ...)
     if(!quiet) cat("OK\n")
-    return(CPUE)
+    CPUE
   }
 
   getSurvey <- function(years)
@@ -173,7 +173,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     Survey$Series <- as.integer(Survey$Series)
     Survey$Year <- as.integer(Survey$Year)
     if(!quiet) cat("OK\n")
-    return(Survey)
+    Survey
   }
 
   getCAc <- function(sexes, ages)
@@ -196,7 +196,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     CAc$Year <- as.integer(CAc$Year)
     CAc$Age <- as.integer(CAc$Age)
     if(!quiet) cat("OK\n")
-    return(CAc)
+    CAc
   }
 
   getCAs <- function(sexes, ages)
@@ -219,7 +219,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     CAs$Year <- as.integer(CAs$Year)
     CAs$Age <- as.integer(CAs$Age)
     if(!quiet) cat("OK\n")
-    return(CAs)
+    CAs
   }
 
   getCLc <- function(sexes, lengths)
@@ -242,7 +242,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     CLc$Year <- as.integer(CLc$Year)
     CLc$Length <- as.integer(CLc$Length)
     if(!quiet) cat("OK\n")
-    return(CLc)
+    CLc
   }
 
   getCLs <- function(sexes, lengths)
@@ -265,7 +265,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     CLs$Year <- as.integer(CLs$Year)
     CLs$Length <- as.integer(CLs$Length)
     if(!quiet) cat("OK\n")
-    return(CLs)
+    CLs
   }
 
   getLA <- function(sexes, ages)
@@ -319,7 +319,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     LA$Fit <- LA$Fit
     LA$CV <- LA$CV
     if(!quiet) cat("OK\n")
-    return(LA)
+    LA
   }
 
   ## 2  Parse args
@@ -381,5 +381,5 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
   attr(model,"scape.version") <- as.character(packageVersion("scape"))
   class(model) <- "scape"
 
-  return(model)
+  model
 }

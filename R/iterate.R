@@ -124,5 +124,5 @@ iterate <- function(model, ceiling=Inf, p=1, digits.n=0, digits.sigma=2)
     }
   }
 
-  return(output)
+  output
 }

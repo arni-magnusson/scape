@@ -12,5 +12,5 @@ estSigmaR <- function(model, digits=2)
   if(!is.null(digits))
     output <- round(output, digits=digits)
 
-  return(output)
+  output
 }

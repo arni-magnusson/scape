@@ -10,5 +10,5 @@ getSigmaR <- function(model, digits=NULL)
   if(!is.null(digits))
     output <- round(output, digits=digits)
 
-  return(output)
+  output
 }

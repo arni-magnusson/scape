@@ -28,5 +28,5 @@ getN <- function(model, what="CAc", series=NULL, digits=NULL)
       output <- round(output, digits=digits)
   }
 
-  return(output)
+  output
 }

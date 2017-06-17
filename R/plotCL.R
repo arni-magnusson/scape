@@ -142,7 +142,7 @@ plotCL <- function(model, what="c", fit=TRUE, swap=FALSE, series=NULL, sex=NULL,
   if(!log && !fixed.ylim)  # leave ylim alone if log-transformed or bubble plot
   {  # set lower ylim to 0
     if(is.list(graph$y.limits))  # multi-panel plot
-      graph$y.limits <- lapply(graph$y.limits, function(y){y[1]<-0;return(y)})
+      graph$y.limits <- lapply(graph$y.limits, function(y){y[1]<-0;y})
     else  # single-panel plot
       graph$y.limits[1] <- 0
   }

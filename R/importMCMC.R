@@ -14,7 +14,7 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
     l[l=="negpen"         ] <- "Negative"
     l[l=="Priorlike"      ] <- "Prior"
     l[l=="f"              ] <- "Total"
-    return(l)
+    l
   }
 
   prettyP <- function(p)
@@ -32,7 +32,7 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
     p <- gsub("log_surveyvarR",      "sSright",  p)
     ## Remove _1 if _2 does not exist
     p <- if(!any(grep("_2",p))) gsub("_1","",p) else p
-    return(p)
+    p
   }
 
   getL <- function()
@@ -51,7 +51,7 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
       if(!quiet) cat("choose...")
     }
     if(!quiet) cat("OK\n")
-    return(L)
+    L
   }
 
   getP <- function()
@@ -71,7 +71,7 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
       if(!quiet) cat("choose...")
     }
     if(!quiet) cat("OK\n")
-    return(P)
+    P
   }
 
   getB <- function()
@@ -82,7 +82,7 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
     names(B) <- substring(names(B), 8)
     if(!quiet) cat("labels...")
     if(!quiet) cat("OK\n")
-    return(B)
+    B
   }
 
   getR <- function()
@@ -95,7 +95,7 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
     names(R) <- as.integer(names(R)) - 1
     if(!quiet) cat("labels...")
     if(!quiet) cat("OK\n")
-    return(R)
+    R
   }
 
   ## 2  Verify that files exist
@@ -122,5 +122,5 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
   ## 5  Create attributes
   attr(output, "call") <- match.call()
 
-  return(output)
+  output
 }

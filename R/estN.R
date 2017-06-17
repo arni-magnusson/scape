@@ -4,7 +4,7 @@ estN.int <- function(P, Phat)
   denominator <- sapply(rownames(P), function(t) sum((P[t,]-Phat[t,])^2))
   nhat <- as.numeric(numerator / denominator)
 
-  return(nhat)
+  nhat
 }
 
 
@@ -60,5 +60,5 @@ estN <- function(model, what="CAc", series=NULL, init=NULL, FUN=mean,
       names(output) <- years
   }
 
-  return(output)
+  output
 }

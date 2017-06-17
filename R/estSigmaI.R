@@ -54,5 +54,5 @@ estSigmaI <- function(model, what="s", series=NULL, init=NULL, FUN=mean, p=1,
       names(output) <- years
   }
 
-  return(output)
+  output
 }
