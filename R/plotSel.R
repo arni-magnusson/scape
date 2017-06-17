@@ -21,11 +21,9 @@ plotSel <- function(model, together=FALSE, series=NULL, sex=NULL, axes=TRUE,
   }
 
   ## 2  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
+  x <- if(class(model)=="scape") model$Sel else model
 
   ## 3  Prepare data (extract, rearrange, filter)
-  x <- model$Sel
   if(is.null(series))
     series <- unique(x$Series)
   if(is.null(sex))
@@ -80,7 +78,7 @@ plotSel <- function(model, together=FALSE, series=NULL, sex=NULL, axes=TRUE,
                     col.points=col.points, lty=lty.lines, lwd=lwd.lines,
                     col.line=col.lines, ...)
   }
-  # Set xlim=0,max(ages) & ylim=0,1
+  ## Set xlim=0,max(ages) & ylim=0,1
   if(is.list(graph$x.limits))  # multi-panel plot
   {
     graph$x.limits <- lapply(graph$x.limits, function(x) c(0, max(x$Age)))
@@ -91,6 +89,7 @@ plotSel <- function(model, together=FALSE, series=NULL, sex=NULL, axes=TRUE,
     graph$x.limits <- c(0, max(x$Age))
     graph$y.limits <- c(-0.005, 1.005)
   }
+
   ## 6  Finish
   if(plot)
   {

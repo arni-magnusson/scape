@@ -36,12 +36,10 @@ plotLA <- function(model, together=FALSE, sex=NULL, axes=TRUE, same.limits=TRUE,
                       col.line=col.lines[2], ...)
   }
   ## 2  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
+  x <- if(class(model)=="scape") model$LA else model  # allow data frame
   relation <- if(same.limits) "same" else "free"
 
   ## 3  Prepare data (extract, rearrange, filter)
-  x <- model$LA
   obs <- x[!is.na(x$Obs),]
   fit <- aggregate(list(Fit=x$Fit,CV=x$CV), list(Sex=x$Sex,Age=x$Age), mean)
   fit$Age <- as.integer(as.character(fit$Age))

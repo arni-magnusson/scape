@@ -31,29 +31,16 @@ plotCL <- function(model, what="c", fit=TRUE, swap=FALSE, series=NULL, sex=NULL,
   }
 
   ## 2  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
   what <- match.arg(what, c("c","s"))
+  x <- if(class(model)=="scape" && what=="c") model$CLc
+       else if(class(model)=="scape" && what=="s") model$CLs
+       else model  # allow data frame
+  if(is.null(x))
+    stop("Element '", what, "' not found")
   relation <- if(same.limits) "same" else "free"
   las <- as.numeric(las)
 
   ## 3  Prepare data (extract, rearrange, filter, transform)
-  if(what == "c")
-  {
-    if(!any(names(model)=="CLc"))
-    {
-      what <- "s"
-      warning("Element 'CLc' (commercial C@L) not found; using what=\"s\"")
-    }
-    else
-      x <- model$CLc
-  }
-  if(what == "s")  # value of 'what' may have changed
-  {
-    if(!any(names(model)=="CLs"))
-      stop("Element 'CLs' (survey C@L) not found")
-    x <- model$CLs
-  }
   x <- data.frame(Series=rep(x$Series,2), Year=rep(x$Year,2), SS=rep(x$SS,2),
                   Sex=rep(x$Sex,2), Length=rep(x$Length,2),
                   ObsFit=c(rep("Obs",nrow(x)),rep("Fit",nrow(x))),
@@ -153,8 +140,7 @@ plotCL <- function(model, what="c", fit=TRUE, swap=FALSE, series=NULL, sex=NULL,
                     lwd=lwd.lines, col.lines=col.lines[factor(x$Sex)], ...)
   }
   if(!log && !fixed.ylim)  # leave ylim alone if log-transformed or bubble plot
-  {
-    ## Set lower ylim to 0
+  {  # set lower ylim to 0
     if(is.list(graph$y.limits))  # multi-panel plot
       graph$y.limits <- lapply(graph$y.limits, function(y){y[1]<-0;return(y)})
     else  # single-panel plot

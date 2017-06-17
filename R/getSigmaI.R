@@ -1,10 +1,10 @@
 getSigmaI <- function(model, what="s", series=NULL, digits=NULL)
 {
   ## 1  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
   what <- match.arg(what, c("c","s"))
-  x <- if(what=="s") model$Survey else model$CPUE
+  x <- if(class(model)=="scape" && what=="c") model$CPUE
+       else if(class(model)=="scape" && what=="s") model$Survey
+       else model  # allow data frame
   if(is.null(x))
     stop(paste("Element", if(what=="s") "'Survey'" else "'CPUE'", "not found"))
   x <- x[!is.na(x$CV),]

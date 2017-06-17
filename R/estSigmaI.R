@@ -2,10 +2,10 @@ estSigmaI <- function(model, what="s", series=NULL, init=NULL, FUN=mean, p=1,
                       digits=2)
 {
   ## 1  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
   what <- match.arg(what, c("c","s"))
-  x <- if(what=="c") model$CPUE else model$Survey
+  x <- if(class(model)=="scape" && what=="c") model$CPUE
+       else if(class(model)=="scape" && what=="s") model$Survey
+       else model  # allow data frame
   if(is.null(x))
     stop("Element '", what, "' not found")
 

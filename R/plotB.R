@@ -21,13 +21,11 @@ plotB <- function(model, what="d", series=NULL, years=NULL, axes=TRUE, div=1,
   }
 
   ## 2  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
   what <- match.arg(what, c("d","s","l"))
+  x <- if(class(model)=="scape") model$B else model  # allow data frame
   las <- as.numeric(las)
 
   ## 3  Prepare data (extract, filter, transform)
-  x <- model$B
   x <- data.frame(Year=rep(x$Year,ncol(x)-1),
                   Series=rep(names(x)[-1],each=nrow(x)),
                   Value=as.vector(as.matrix(x[,-1])))

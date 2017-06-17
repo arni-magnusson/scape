@@ -1,10 +1,8 @@
 getN <- function(model, what="CAc", series=NULL, digits=NULL)
 {
   ## 1  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
   what <- match.arg(what, c("CAc","CAs","CLc","CLs"))
-  x <- model[[what]]
+  x <- if(class(model)=="scape") model[[what]] else model  # allow data frame
   if(is.null(x))
     stop("Element '", what, "' not found")
 

@@ -21,14 +21,12 @@ plotN <- function(model, what="d", swap=FALSE, years=NULL, ages=NULL, axes=TRUE,
   }
 
   ## 2  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
   what <- match.arg(what, c("d","i","l","r","p","b"))
+  x <- if(class(model)=="scape") model$N else model  # allow data frame
   relation <- if(same.limits) "same" else "free"
   las <- as.numeric(las)
 
   ## 3  Prepare data (extract, rearrange, filter, transform)
-  x <- model$N
   x <- aggregate(list(N=x$N), list(Year=x$Year,Age=x$Age), sum)
   x$Year <- as.integer(as.character(x$Year))
   x$Age <- as.integer(as.character(x$Age))
@@ -68,6 +66,8 @@ plotN <- function(model, what="d", swap=FALSE, years=NULL, ages=NULL, axes=TRUE,
   fixed.ylim <- FALSE
   if(what == "d")
   {  # recursive flow: plotN("i",plot=F) -> print -> plotN("r",plot=F) -> print
+    if(class(model) != "scape")
+      stop("Default plot(what=\"d\") requires that model is a 'scape' object")
     graph <- plotN(model, what="i", years=years, ages=ages, axes=axes,
                    relation=relation, div=div, log=log, base=base, main=main,
                    xlab=xlab, ylab=ylab, cex.main=cex.main, cex.lab=cex.lab,
@@ -144,8 +144,7 @@ plotN <- function(model, what="d", swap=FALSE, years=NULL, ages=NULL, axes=TRUE,
     fixed.ylim <- TRUE
   }
   if(!log && !fixed.ylim)  # leave ylim alone if log-transformed or bubble plot
-  {
-    ## Set lower ylim to 0
+  {  # set lower ylim to 0
     if(is.list(graph$y.limits))  # multi-panel plot
       graph$y.limits <- lapply(graph$y.limits, function(y){y[1]<-0;return(y)})
     else  # single-panel plot

@@ -9,8 +9,8 @@ plotIndex <- function(model, what="s", series=NULL, axes=TRUE,
                       col.lines="dimgray", lty.bar=1, plot=TRUE, ...)
 {
   ## 1  Define functions
-  panel.index <- function(x, y, subscripts, yobs, yfit, col.points, col.lines,
-                          ...)  # overlay obs&fit in series panels
+  panel.index <- function(x, y, subscripts, yobs, yfit, col.points,
+                          col.lines, ...)  # overlay obs&fit in series panels
   {
     y.range <- range(c(rep(0,!log),attr(yobs,"other"),y), na.rm=TRUE)
     panel.abline(v=pretty(x,tick.number), h=pretty(y.range,tick.number),
@@ -26,40 +26,15 @@ plotIndex <- function(model, what="s", series=NULL, axes=TRUE,
   }
 
   ## 2  Parse args
-  if(class(model) != "scape")
-    stop("The 'model' argument should be a scape object, not ", class(model))
   what <- match.arg(what, c("c","s"))
+  x <- if(class(model)=="scape" && what=="c") model$CPUE
+       else if(class(model)=="scape" && what=="s") model$Survey
+       else model  # allow data frame
+  if(is.null(x))
+    stop("Element '", what, "' not found")
   relation <- if(same.limits) "same" else "free"
 
   ## 3  Prepare data (extract, filter, add columns, transform)
-  if(what == "c")
-  {
-    if(any(names(model) == "CPUE"))
-      x <- model$CPUE
-    else if(any(names(model) == "Survey"))
-    {
-      what <- "s"
-      warning("Element 'CPUE' not found; assuming what=\"s\" was intended")
-    }
-    else
-    {
-      stop("Elements 'CPUE' and 'Survey' not found")
-    }
-  }
-  if(what == "s")  # 'what' may have changed since last if statement
-  {
-    if(any(names(model) == "Survey"))
-      x <- model$Survey
-    else if(any(names(model) == "CPUE"))
-    {
-      x <- model$CPUE
-      warning("Element 'Survey' not found; assuming what=\"c\" was intended")
-    }
-    else
-    {
-      stop("Elements 'CPUE' and 'Survey' not found")
-    }
-  }
   if(is.null(series))
     series <- unique(x$Series)
   ok.series <- x$Series %in% series
