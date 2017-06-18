@@ -46,18 +46,19 @@
 \source{
   ICES (2015) \emph{Report of the North-Western Working Group (NWWG).}
   ICES CM 2015/ACOM:07. Available at
-  \url{http://ices.dk/sites/pub/Publication Reports/Expert Group Report/acom/2015/NWWG/01 NWWG Report 2015.pdf}.
+  \url{http://ices.dk/sites/pub/Publication\%20Reports/Expert\%20Group\%20Report/acom/2015/NWWG/01\%20NWWG\%20Report\%202015.pdf}.
 }
 \references{
   Bjornsson, H. and A. Magnusson. (2009) \emph{ADCAM user manual (draft
     version). ICES CM 2009/ACOM:56 Annex 6.} Available at
-  \url{http://ices.dk/sites/pub/Publication Reports/Expert Group Report/acom/2009/AGICOD/AGICOD Report 2009.pdf}.
+  \url{http://ices.dk/sites/pub/Publication\%20Reports/Expert\%20Group\%20Report/acom/2009/AGICOD/AGICOD\%20Report\%202009.pdf}.
 }
 \seealso{
   \code{\link{importADCAM}} was used to import the fitted model.
 
-  \code{x.cod}, \code{\link{x.ling}}, \code{\link{x.oreo}}, and
-  \code{\link{x.sbw}} are fitted \code{scape} models to explore.
+  \code{\link{x.cod}}, \code{\link{x.ling}}, \code{\link{x.oreo}},
+  \code{x.saithe}, and \code{\link{x.sbw}} are fitted \code{scape}
+  models to explore.
 
   \code{\link{scape-package}} gives an overview of the package.
 }

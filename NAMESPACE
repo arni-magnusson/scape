@@ -1,4 +1,4 @@
-export(importCol, importMCMC, importProj)
+export(importADCAM, importCol, importMCMC, importProj)
 export(plotB, plotCA, plotCL, plotIndex, plotLA, plotN, plotSel)
 export(estN, estN.int, estSigmaI, estSigmaR, getN, getSigmaI, getSigmaR,
        iterate)
