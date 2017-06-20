@@ -54,8 +54,6 @@ importProj(dir, coda=FALSE, quiet=TRUE)
   \code{\link{scape-package}} gives an overview of the package.
 }
 \examples{
-\dontrun{
-dir <- system.file("example/mcmc", package="scape")
-xproj <- importProj(dir)
-}
+path <- system.file("example/mcmc", package="scape")
+proj <- importProj(path)
 }

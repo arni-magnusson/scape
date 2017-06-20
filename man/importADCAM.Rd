@@ -52,8 +52,6 @@ importADCAM(dir)
   \code{\link{scape-package}} gives an overview of the package.
 }
 \examples{
-\dontrun{
 path <- system.file("example/saithe", package="scape")
-x.saithe <- importADCAM(path)
-}
+saithe <- importADCAM(path)
 }

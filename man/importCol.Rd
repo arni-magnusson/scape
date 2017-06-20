@@ -67,8 +67,6 @@ importCol(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
   \code{\link{scape-package}} gives an overview of the package.
 }
 \examples{
-\dontrun{
 path <- system.file("example/cod.res", package="scape")
-x.cod <- importCol(path, Dev=TRUE, Survey=TRUE, CAc=TRUE, CAs=TRUE)
-}
+cod <- importCol(path, Dev=TRUE, Survey=TRUE, CAc=TRUE, CAs=TRUE)
 }

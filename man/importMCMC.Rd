@@ -58,12 +58,10 @@ importMCMC(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
   \code{\link{scape-package}} gives an overview of the package.
 }
 \examples{
-\dontrun{
-dir <- system.file("example/mcmc", package="scape")
-xmcmc <- importMCMC(dir)  # or rename and select particular elements:
-xmcmc <- importMCMC(dir, pretty.labels=TRUE,
-                    l.choose=c("CAc","CAs","Survey","Prior","Total"),
-                    p.choose=c("R0","Rinit","uinit","cSleft","cSfull",
-                               "sSleft","sSfull","logq"))
-}
+path <- system.file("example/mcmc", package="scape")
+mcmc <- importMCMC(path)  # or rename and select particular elements:
+mcmc <- importMCMC(path, pretty.labels=TRUE,
+                   l.choose=c("CAc","CAs","Survey","Prior","Total"),
+                   p.choose=c("R0","Rinit","uinit","cSleft","cSfull",
+                              "sSleft","sSfull","logq"))
 }
