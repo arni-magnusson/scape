@@ -31,14 +31,14 @@ plotIndex <- function(model, what="s", series=NULL, axes=TRUE,
        else if(class(model)=="scape" && what=="s") model$Survey
        else model  # allow data frame
   if(is.null(x))
-    stop("Element '", what, "' not found")
+    stop("element '", what, "' not found")
   relation <- if(same.limits) "same" else "free"
 
   ## 3  Prepare data (extract, filter, add columns, transform)
   if(is.null(series))
     series <- unique(x$Series)
   ok.series <- x$Series %in% series
-  if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+  if(!any(ok.series)) stop("please check if the 'series' argument is correct")
   x <- x[ok.series,]
   if(is.numeric(x$Series))
     x$Series <- factor(paste("Series", x$Series))

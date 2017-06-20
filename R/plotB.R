@@ -35,9 +35,9 @@ plotB <- function(model, what="d", series=NULL, years=NULL, axes=TRUE, div=1,
   if(is.null(years))
     years <- unique(x$Year)
   ok.series <- x$Series %in% series
-  if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+  if(!any(ok.series)) stop("please check if the 'series' argument is correct")
   ok.years <- x$Year %in% years
-  if(!any(ok.years)) stop("Please check if the 'years' argument is correct")
+  if(!any(ok.years)) stop("please check if the 'years' argument is correct")
   x <- x[ok.series & ok.years,]
   Bframe <- x[x$Series %in% grep("B",series,value=TRUE),]
   Rframe <- x[x$Series=="R",]

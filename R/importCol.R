@@ -324,7 +324,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
 
   ## 2  Parse args
   if(!file.exists(res.file))
-    stop("File ", res.file, " not found; use / or \\\\ separators")
+    stop("file ", res.file, " not found; use / or \\\\ separators")
 
   ## 3  Read dimensions
   res.vector <- readLines(res.file)  # string vector, one element being one line
@@ -364,12 +364,12 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
   {
     latage.file <- paste(dirname(res.file),"l_at_age.dat",sep="/")
     if(!file.exists(latage.file))
-      stop("File ", latage.file, " not found; use / or \\\\ separators")
+      stop("file ", latage.file, " not found; use / or \\\\ separators")
     latage.vector <- readLines(latage.file)  # LAnobs for each sex
     latage.vector <- gsub("\"","", gsub("\t","",gsub(" ","",latage.vector)))
     txt.file <- gsub("\\.res", "\\.txt", res.file)
     if(!file.exists(txt.file))
-      stop("File ", txt.file, " not found; use / or \\\\ separators")
+      stop("file ", txt.file, " not found; use / or \\\\ separators")
     txt.vector <- readLines(txt.file)  # sigmaLA~x
     txt.vector <- gsub("\"","", gsub("\t","",gsub(" ","",txt.vector)))
     model$LA <- getLA(sexes, ages)

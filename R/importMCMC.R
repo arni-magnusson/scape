@@ -104,7 +104,7 @@ importMCMC <- function(dir, coda=FALSE, quiet=TRUE, pretty.labels=FALSE,
                  sep="/")
   sapply(files, function(f)
          if(!file.exists(f))
-           stop("File ",f," does not exist. Please check the 'dir' argument."))
+           stop("file ",f," does not exist; please check the 'dir' argument"))
 
   ## 3  Parse files
   if(!quiet) cat("\nParsing files in directory ", dir, ":\n\n", sep="")

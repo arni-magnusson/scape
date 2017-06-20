@@ -16,7 +16,7 @@ estN <- function(model, what="CAc", series=NULL, init=NULL, FUN=mean,
   what <- match.arg(what, c("CAc","CAs","CLc","CLs"))
   x <- if(class(model)=="scape") model[[what]] else model  # allow data frame
   if(is.null(x))
-    stop("Element '", what, "' not found")
+    stop("element '", what, "' not found")
   x$Column <- if(substring(what,1,2)=="CA") x$Age else x$Length
 
   ## 2  Extract series
@@ -32,7 +32,7 @@ estN <- function(model, what="CAc", series=NULL, init=NULL, FUN=mean,
   else
   {
     ok.series <- x$Series %in% series
-    if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+    if(!any(ok.series)) stop("please check if the 'series' argument is correct")
     x <- x[!is.na(x$Obs) & ok.series,]
 
     ## 3  Calculate nhat

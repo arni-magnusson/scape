@@ -36,7 +36,7 @@ plotCL <- function(model, what="c", fit=TRUE, swap=FALSE, series=NULL, sex=NULL,
        else if(class(model)=="scape" && what=="s") model$CLs
        else model  # allow data frame
   if(is.null(x))
-    stop("Element '", what, "' not found")
+    stop("element '", what, "' not found")
   relation <- if(same.limits) "same" else "free"
   las <- as.numeric(las)
 
@@ -45,31 +45,27 @@ plotCL <- function(model, what="c", fit=TRUE, swap=FALSE, series=NULL, sex=NULL,
                   Sex=rep(x$Sex,2), Length=rep(x$Length,2),
                   ObsFit=c(rep("Obs",nrow(x)),rep("Fit",nrow(x))),
                   P=c(x$Obs,x$Fit))
-  if(is.null(series))
-    series <- unique(x$Series)
-  if(is.null(sex))
-    sex <- unique(x$Sex)
-  if(is.null(years))
-    years <- unique(x$Year)
-  if(is.null(lengths))
-    lengths <- unique(x$Length)
+  if(is.null(series)) series <- unique(x$Series)
+  if(is.null(sex)) sex <- unique(x$Sex)
+  if(is.null(years)) years <- unique(x$Year)
+  if(is.null(lengths)) lengths <- unique(x$Length)
   if(length(series) > 1)
   {
     series <- series[1]
-    warning("More than one C@L series found; assuming series=\"", series,
+    warning("more than one C@L series found; assuming series=\"", series,
             "\" was intended", sep="")
   }
   ok.series <- x$Series %in% series
-  if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+  if(!any(ok.series)) stop("please check if the 'series' argument is correct")
   ok.sex <- x$Sex %in% sex
-  if(!any(ok.sex)) stop("Please check if the 'sex' argument is correct")
+  if(!any(ok.sex)) stop("please check if the 'sex' argument is correct")
   ok.years <- x$Year %in% years
-  if(!any(ok.years)) stop("Please check if the 'years' argument is correct")
+  if(!any(ok.years)) stop("please check if the 'years' argument is correct")
   ok.lengths <- x$Length %in% lengths
-  if(!any(ok.lengths)) stop("Please check if the 'lengths' argument is correct")
+  if(!any(ok.lengths)) stop("please check if the 'lengths' argument is correct")
   x <- x[ok.series & ok.sex & ok.years & ok.lengths,]
   if(nrow(x) == 0)
-    stop("Empty data frame, please check: series, sex, years, lengths")
+    stop("empty data frame, please check: series, sex, years, lengths")
   nsexes <- length(unique(x$Sex))
   if(log)
     x$P <- log(x$P+eps.log, base=base)

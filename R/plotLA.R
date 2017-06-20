@@ -53,7 +53,7 @@ plotLA <- function(model, together=FALSE, sex=NULL, axes=TRUE, same.limits=TRUE,
   if(is.null(sex))
     sex <- unique(x$Sex)
   ok.sex <- x$Sex %in% sex
-  if(!any(ok.sex)) stop("Please check if the 'sex' argument is correct")
+  if(!any(ok.sex)) stop("please check if the 'sex' argument is correct")
   x <- x[ok.sex,]
   if(!bands)
     x <- x[x$ObsFit!="Upper"|x$ObsFit!="Lower",]

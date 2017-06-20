@@ -35,9 +35,9 @@ plotN <- function(model, what="d", swap=FALSE, years=NULL, ages=NULL, axes=TRUE,
   if(is.null(ages))
     ages <- unique(x$Age)
   ok.years <- x$Year %in% years
-  if(!any(ok.years)) stop("Please check if the 'years' argument is correct")
+  if(!any(ok.years)) stop("please check if the 'years' argument is correct")
   ok.ages <- x$Age %in% ages
-  if(!any(ok.ages)) stop("Please check if the 'ages' argument is correct")
+  if(!any(ok.ages)) stop("please check if the 'ages' argument is correct")
   x <- x[ok.years & ok.ages,]
   x$N <- x$N / div
   if(log)
@@ -67,7 +67,7 @@ plotN <- function(model, what="d", swap=FALSE, years=NULL, ages=NULL, axes=TRUE,
   if(what == "d")
   {  # recursive flow: plotN("i",plot=F) -> print -> plotN("r",plot=F) -> print
     if(class(model) != "scape")
-      stop("Default plot(what=\"d\") requires that model is a 'scape' object")
+      stop("default plot(what=\"d\") requires that 'model' is a scape object")
     graph <- plotN(model, what="i", years=years, ages=ages, axes=axes,
                    relation=relation, div=div, log=log, base=base, main=main,
                    xlab=xlab, ylab=ylab, cex.main=cex.main, cex.lab=cex.lab,

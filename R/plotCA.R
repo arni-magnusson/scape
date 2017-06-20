@@ -36,7 +36,7 @@ plotCA <- function(model, what="c", fit=TRUE, swap=FALSE, series=NULL, sex=NULL,
        else if(class(model)=="scape" && what=="s") model$CAs
        else model  # allow data frame
   if(is.null(x))
-    stop("Element '", what, "' not found")
+    stop("element '", what, "' not found")
   relation <- if(same.limits) "same" else "free"
   las <- as.numeric(las)
 
@@ -52,20 +52,20 @@ plotCA <- function(model, what="c", fit=TRUE, swap=FALSE, series=NULL, sex=NULL,
   if(length(series) > 1)
   {
     series <- series[1]
-    warning("More than one C@A series found; assuming series=\"", series,
+    warning("more than one C@A series found; assuming series=\"", series,
             "\" was intended", sep="")
   }
   ok.series <- x$Series %in% series
-  if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+  if(!any(ok.series)) stop("please check if the 'series' argument is correct")
   ok.sex <- x$Sex %in% sex
-  if(!any(ok.sex)) stop("Please check if the 'sex' argument is correct")
+  if(!any(ok.sex)) stop("please check if the 'sex' argument is correct")
   ok.years <- x$Year %in% years
-  if(!any(ok.years)) stop("Please check if the 'years' argument is correct")
+  if(!any(ok.years)) stop("please check if the 'years' argument is correct")
   ok.ages <- x$Age %in% ages
-  if(!any(ok.ages)) stop("Please check if the 'ages' argument is correct")
+  if(!any(ok.ages)) stop("please check if the 'ages' argument is correct")
   x <- x[ok.series & ok.sex & ok.years & ok.ages,]
   if(nrow(x) == 0)
-    stop("Empty data frame, please check: series, sex, years, ages")
+    stop("empty data frame, please check: series, sex, years, ages")
   nsexes <- length(unique(x$Sex))
   if(log)
     x$P <- log(x$P+eps.log, base=base)

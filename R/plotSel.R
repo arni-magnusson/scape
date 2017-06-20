@@ -29,9 +29,9 @@ plotSel <- function(model, together=FALSE, series=NULL, sex=NULL, axes=TRUE,
   if(is.null(sex))
     sex <- unique(x$Sex)
   ok.series <- x$Series %in% series
-  if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+  if(!any(ok.series)) stop("please check if the 'series' argument is correct")
   ok.sex <- x$Sex %in% sex
-  if(!any(ok.sex)) stop("Please check if the 'sex' argument is correct")
+  if(!any(ok.sex)) stop("please check if the 'sex' argument is correct")
   x <- x[ok.series & ok.sex,]
   if(is.numeric(x$Series))
     x$Series <- factor(paste("Series", x$Series))

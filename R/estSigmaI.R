@@ -7,7 +7,7 @@ estSigmaI <- function(model, what="s", series=NULL, init=NULL, FUN=mean, p=1,
        else if(class(model)=="scape" && what=="s") model$Survey
        else model  # allow data frame
   if(is.null(x))
-    stop("Element '", what, "' not found")
+    stop("element '", what, "' not found")
 
   ## 2  Extract series
   if(is.null(series))
@@ -22,7 +22,7 @@ estSigmaI <- function(model, what="s", series=NULL, init=NULL, FUN=mean, p=1,
   else
   {
     ok.series <- x$Series %in% series
-    if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+    if(!any(ok.series)) stop("please check if the 'series' argument is correct")
     x <- x[!is.na(x$Obs) & ok.series,]
 
     ## 3  Calculate sigmahat

@@ -6,7 +6,7 @@ getSigmaI <- function(model, what="s", series=NULL, digits=NULL)
        else if(class(model)=="scape" && what=="s") model$Survey
        else model  # allow data frame
   if(is.null(x))
-    stop(paste("Element", if(what=="s") "'Survey'" else "'CPUE'", "not found"))
+    stop(paste("element", if(what=="s") "'Survey'" else "'CPUE'", "not found"))
   x <- x[!is.na(x$CV),]
 
   ## 2  Extract series
@@ -21,7 +21,7 @@ getSigmaI <- function(model, what="s", series=NULL, digits=NULL)
   else
   {
     ok.series <- x$Series %in% series
-    if(!any(ok.series)) stop("Please check if the 'series' argument is correct")
+    if(!any(ok.series)) stop("please check if the 'series' argument is correct")
     x <- x[!is.na(x$Obs) & ok.series,]
 
     ## 3  Create output

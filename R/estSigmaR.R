@@ -3,7 +3,7 @@ estSigmaR <- function(model, digits=2)
   ## 1  Parse args
   x <- if(class(model)=="scape") model$Dev else model  # allow data frame
   if(is.null(x))
-    stop("Element 'Dev' not found")
+    stop("element 'Dev' not found")
 
   ## 2  Calculate sigmaR
   ss <- sapply(x[c("Initial","Annual")], function(x) sum(x^2))
