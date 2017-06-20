@@ -25,7 +25,8 @@ importADCAM <- function(dir)
   ## 3  Read N, Dev, B, Sel
   model <- list()
   tmp <- xYearAge[xYearAge$year<=max(years),]
-  model$N <- data.frame(Sex="Unisex", Year=tmp$year, Age=tmp$age, N=tmp$N)
+  model$N <- data.frame(Sex="Unisex", Year=tmp$year, Age=tmp$age, N=tmp$N,
+                        stringsAsFactors=FALSE)
   tmp <- model$N[model$N$Year==min(years)&model$N$Age>1,]
   model$Dev$Initial <- log(tmp$N) - mean(log(tmp$N))
   names(model$Dev$Initial) <- ages[-1]
@@ -36,7 +37,7 @@ importADCAM <- function(dir)
   model$B <- data.frame(Year=tmp$year, VB=tmp$RefBio2, SB=tmp$Spawningstock,
                         Y=tmp$CatchIn1000tons, R=tmp$Recruitment)
   Sel <- data.frame(Series=rep(series,each=nrow(xAge)), Sex="Unisex",
-                    Age=xAge$age, P=as.numeric(NA))
+                    Age=xAge$age, P=as.numeric(NA), stringsAsFactors=FALSE)
   for(i in seq_along(periods))
   {
     tmp <- xYearAge[xYearAge$year==periods[i],]
@@ -57,13 +58,15 @@ importADCAM <- function(dir)
   tmp <- xYearAge[xYearAge$year<=max(catch.years),]
   model$CAc <- data.frame(Series=1L, Year=tmp$year, SS=tmp$CatchDiff,
                           Sex="Unisex", Age=tmp$age, Obs=tmp$ObsCno,
-                          Fit=ifelse(tmp$CalcCno==0,NA,tmp$CalcCno))
+                          Fit=ifelse(tmp$CalcCno==0,NA,tmp$CalcCno),
+                          stringsAsFactors=FALSE)
   tmp <- xYearAge[xYearAge$year%in%survey.years,]
   model$CAs <- data.frame(Series=1L, Year=tmp$year,
                           SS=ifelse(tmp$SurveyResiduals1==0,NA,
                               tmp$SurveyResiduals1),
                           Sex="Unisex", Age=tmp$age, Obs=tmp$ObsSurveyNr1,
-                          Fit=ifelse(tmp$CalcSurveyNr1==0,NA,tmp$CalcSurveyNr1))
+                          Fit=ifelse(tmp$CalcSurveyNr1==0,NA,tmp$CalcSurveyNr1),
+                          stringsAsFactors=FALSE)
 
   ## 5  Create attributes
   attr(model,"call") <- match.call()

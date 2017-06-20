@@ -1,6 +1,5 @@
 importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
-                      CAs=FALSE, CLc=FALSE, CLs=FALSE, LA=FALSE, quiet=TRUE,
-                      ...)
+                      CAs=FALSE, CLc=FALSE, CLs=FALSE, LA=FALSE, quiet=TRUE)
 {
   ## Implementation notes
   ## read* functions: Vector, Matrix
@@ -53,7 +52,8 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     {
       Nu <- readMatrix("Numbers_at_age_by_Year,sex_and_age", nrow=nyears*nsexes)
       N <- data.frame(Sex=rep(sexes,nyears*nages), Year=rep(years,each=nages),
-                      Age=rep(ages,nyears), N=as.vector(t(Nu)), ...)
+                      Age=rep(ages,nyears), N=as.vector(t(Nu)),
+                      stringsAsFactors=FALSE)
     }
     if(nsexes == 2)
     {
@@ -63,7 +63,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                        nrow=nyears*nsexes, stripe="lower")
       N <- data.frame(Sex=rep(sexes,each=nyears*nages),
                       Year=rep(rep(years,each=nages),2), Age=rep(ages,2*nyears),
-                      N=as.vector(t(rbind(Nf,Nm))), ...)
+                      N=as.vector(t(rbind(Nf,Nm))), stringsAsFactors=FALSE)
     }
     if(!quiet) cat("OK\n")
     N
@@ -76,7 +76,7 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     vb <- readMatrix("Vulnerable_Biomass_by_Method_and_Year", nrow=ngears)
     sb <- readVector("Spawning_Biomass_by_Year", same.line=FALSE)
     y  <- c(readVector("Total_Catch_by_Method_and_Year", same.line=FALSE), NA)
-    B <- data.frame(years=years, vb=t(vb), sb=sb, y=y, ...)
+    B <- data.frame(years=years, vb=t(vb), sb=sb, y=y)
     names(B) <- if(ngears==1) c("Year", "VB", "SB", "Y")
                 else c("Year", paste("VB",gears,sep="."), "SB", "Y")
     if(!quiet) cat("OK\n")
@@ -113,7 +113,8 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                         rep("Maturity",nsexes*nages)),
                       Sex=rep(rep(sexes,each=nages),ngears+nsurveys+1),
                       Age=rep(ages,(ngears+nsurveys+1)*nsexes),
-                      P=c(t(com),t(srv),mat), ...)
+                      P=c(t(com),t(srv),mat),
+                      stringsAsFactors=FALSE)
     if(!quiet) cat("OK\n")
     Sel
   }
@@ -142,17 +143,18 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     obs <- readMatrix("indexmethodyearvaluecv",
                       nrow=readVector("Number_of_CPUE_data",same.line=FALSE))
     obs <- data.frame(Series=obs[,1], Gear=obs[,2], Year=obs[,3], Obs=obs[,4],
-                      CV=obs[,5], ...)
+                      CV=obs[,5], stringsAsFactors=FALSE)
     fit <- readMatrix("CPUE_Index_Trajectories", nrow=nseries)
     fit <- data.frame(Series=rep(1:nseries,each=nyears),
-                      Year=rep(years,nseries), Fit=as.vector(t(fit)), ...)
+                      Year=rep(years,nseries), Fit=as.vector(t(fit)),
+                      stringsAsFactors=FALSE)
     ## Merge without looking at gear
     CPUE <- merge(obs[,names(obs)!="Gear"], fit, all=TRUE)
     sgkey <- unique(obs[,c("Series","Gear")])
     CPUE <- merge(sgkey, CPUE)  # add gear column
     CPUE <- data.frame(Series=paste("Series ",CPUE$Series,"-",CPUE$Gear,sep=""),
                        Year=as.integer(CPUE$Year), Obs=CPUE$Obs, CV=CPUE$CV,
-                       Fit=CPUE$Fit, ...)
+                       Fit=CPUE$Fit, stringsAsFactors=FALSE)
     if(!quiet) cat("OK\n")
     CPUE
   }
@@ -164,11 +166,11 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
     nseries <- readVector("Nsurveyindex")
     obs <- readMatrix("indexyearvaluecv",
                       nrow=readVector("Number_of_survey_data",same.line=FALSE))
-    obs <- data.frame(Series=obs[,1], Year=obs[,2], Obs=obs[,3],
-                      CV=obs[,4], ...)
+    obs <- data.frame(Series=obs[,1], Year=obs[,2], Obs=obs[,3], CV=obs[,4])
     fit <- readMatrix("Survey_Index_Trajectories", nrow=nseries)
     fit <- data.frame(Series=rep(1:nseries,each=nyears),
-                      Year=rep(years,nseries), Fit=as.vector(t(fit)), ...)
+                      Year=rep(years,nseries), Fit=as.vector(t(fit)),
+                      stringsAsFactors=FALSE)
     Survey <- merge(obs, fit, all=TRUE)
     Survey$Series <- as.integer(Survey$Series)
     Survey$Year <- as.integer(Survey$Year)
@@ -191,7 +193,8 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                       Sex=rep(rep(sexes,each=nages),nobs),
                       Age=rep(ages,nsexes*nobs),
                       Obs=as.vector(t(obs[,-(1:3)])),
-                      Fit=as.vector(t(fit)), ...)
+                      Fit=as.vector(t(fit)),
+                      stringsAsFactors=FALSE)
     CAc$Series <- as.integer(CAc$Series)
     CAc$Year <- as.integer(CAc$Year)
     CAc$Age <- as.integer(CAc$Age)
@@ -214,7 +217,8 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                       Sex=rep(rep(sexes,each=nages),nobs),
                       Age=rep(ages,nsexes*nobs),
                       Obs=as.vector(t(obs[,-(1:3)])),
-                      Fit=as.vector(t(fit)), ...)
+                      Fit=as.vector(t(fit)),
+                      stringsAsFactors=FALSE)
     CAs$Series <- as.integer(CAs$Series)
     CAs$Year <- as.integer(CAs$Year)
     CAs$Age <- as.integer(CAs$Age)
@@ -237,7 +241,8 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                       Sex=rep(rep(sexes,each=nlengths),nobs),
                       Length=rep(lengths,nsexes*nobs),
                       Obs=as.vector(t(obs[,-(1:3)])),
-                      Fit=as.vector(t(fit)), ...)
+                      Fit=as.vector(t(fit)),
+                      stringsAsFactors=FALSE)
     CLc$Series <- as.integer(CLc$Series)
     CLc$Year <- as.integer(CLc$Year)
     CLc$Length <- as.integer(CLc$Length)
@@ -260,7 +265,8 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                       Sex=rep(rep(sexes,each=nlengths),nobs),
                       Length=rep(lengths,nsexes*nobs),
                       Obs=as.vector(t(obs[,-(1:3)])),
-                      Fit=as.vector(t(fit)), ...)
+                      Fit=as.vector(t(fit)),
+                      stringsAsFactors=FALSE)
     CLs$Series <- as.integer(CLs$Series)
     CLs$Year <- as.integer(CLs$Year)
     CLs$Length <- as.integer(CLs$Length)
@@ -278,7 +284,8 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
                        vector=latage.vector)  # two elements
     obs <- readMatrix("VonBertalanfy--Lenght-at-agefit--Likelihood",
                       nrow=sum(nobs), header=8)
-    obs <- data.frame(Sex=rep(sexes,nobs), Age=obs[,1], Obs=obs[,2], ...)
+    obs <- data.frame(Sex=rep(sexes,nobs), Age=obs[,1], Obs=obs[,2],
+                      stringsAsFactors=FALSE)
     Linf <- suppressWarnings(readVector("VonBeratalanfy:Linf")[-(1:3)])
     K <- suppressWarnings(readVector("VonBeratalanfy:k")[-(1:3)])
     t0 <- suppressWarnings(readVector("VonBeratalanfy:to")[-(1:3)])
@@ -290,8 +297,8 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
       same.line=FALSE, file=txt.file, vector=txt.vector)[1]
     max.age <- c(max(obs$Age[obs$Sex==sexes[1]]),
                  max(obs$Age[obs$Sex==sexes[2]]))  # max ages in LA data
-    fit <- data.frame(Sex=rep(sexes,max.age),
-                      Age=c(1:max.age[1],1:max.age[2]), ...)
+    fit <- data.frame(Sex=rep(sexes,max.age), Age=c(1:max.age[1],1:max.age[2]),
+                      stringsAsFactors=FALSE)
     fit$Fit[fit$Sex==sexes[1]] <- Linf[1]*
       (1-exp(-K[1]*(fit$Age[fit$Sex==sexes[1]]-t0[1])))
     fit$Fit[fit$Sex==sexes[2]] <- Linf[2]*

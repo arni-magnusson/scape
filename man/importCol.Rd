@@ -7,7 +7,7 @@
 }
 \usage{
 importCol(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
-          CAs=FALSE, CLc=FALSE, CLs=FALSE, LA=FALSE, quiet=TRUE, \dots)
+          CAs=FALSE, CLc=FALSE, CLs=FALSE, LA=FALSE, quiet=TRUE)
 }
 \arguments{
   \item{res.file}{name of Coleraine model results file to import.}
@@ -22,8 +22,6 @@ importCol(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
   \item{CLs}{whether model was fitted to survey catch-at-length data.}
   \item{LA}{whether model was fitted to length-at-age data.}
   \item{quiet}{whether to report progress while parsing file.}
-  \item{\dots}{passed to \code{data.frame}, e.g.
-    \samp{stringsAsFactors=FALSE}.}
 }
 \value{
   A list of class \code{scape} containing at least \code{N}, \code{B},
