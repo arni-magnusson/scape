@@ -70,7 +70,6 @@ importADCAM <- function(dir)
 
   ## 5  Create attributes
   attr(model,"call") <- match.call()
-  attr(model,"scape.version") <- as.character(packageVersion("scape"))
   class(model) <- "scape"
 
   model

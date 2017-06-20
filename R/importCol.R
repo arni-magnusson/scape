@@ -385,7 +385,6 @@ importCol <- function(res.file, Dev=FALSE, CPUE=FALSE, Survey=FALSE, CAc=FALSE,
 
   ## 6  Create attributes
   attr(model,"call") <- match.call()
-  attr(model,"scape.version") <- as.character(packageVersion("scape"))
   class(model) <- "scape"
 
   model
