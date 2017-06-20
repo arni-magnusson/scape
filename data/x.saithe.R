@@ -1111,4 +1111,4 @@ structure(list(N = structure(list(Sex = c("Unisex", "Unisex",
         0.759749, 0.490601, 0.21827, NA, NA, NA, NA)), .Names = c("Series", 
     "Year", "SS", "Sex", "Age", "Obs", "Fit"), row.names = c(NA, 
     -434L), class = "data.frame")), .Names = c("N", "Dev", "B", 
-"Sel", "Survey", "CAc", "CAs"), call = quote(importADCAM(dir = "~/r/library/scape/example/saithe")), scape.version = "2.2.0", class = "scape")
+"Sel", "Survey", "CAc", "CAs"), call = quote(importADCAM(dir = "~/r/library/scape/example/saithe")), scape.version = "2.3.0", class = "scape")
