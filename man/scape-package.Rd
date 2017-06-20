@@ -58,8 +58,7 @@
 \references{
   Magnusson, A. (2005) \emph{R goes fishing: Analyzing fisheries data
     using AD Model Builder and R.} Proceedings of the 4th International
-  Workshop on Distributed Statistical Computing. Available at
-  \url{http://www.hafro.is/~arnima/pdf/2005-scape.pdf}.
+  Workshop on Distributed Statistical Computing.
 
   Magnusson, A. and Hilborn, R. (2007) What makes fisheries data
   informative? \emph{Fish and Fisheries} \bold{8}, 337--358.

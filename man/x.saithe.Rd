@@ -45,13 +45,11 @@
 }
 \source{
   ICES (2015) \emph{Report of the North-Western Working Group (NWWG).}
-  ICES CM 2015/ACOM:07. Available at
-  \url{http://ices.dk/sites/pub/Publication\%20Reports/Expert\%20Group\%20Report/acom/2015/NWWG/01\%20NWWG\%20Report\%202015.pdf}.
+  ICES CM 2015/ACOM:07.
 }
 \references{
   Bjornsson, H. and A. Magnusson. (2009) \emph{ADCAM user manual (draft
-    version). ICES CM 2009/ACOM:56 Annex 6.} Available at
-  \url{http://ices.dk/sites/pub/Publication\%20Reports/Expert\%20Group\%20Report/acom/2009/AGICOD/AGICOD\%20Report\%202009.pdf}.
+    version).} ICES CM 2009/ACOM:56 Annex 6.
 }
 \seealso{
   \code{\link{importADCAM}} was used to import the fitted model.
