@@ -1,5 +1,5 @@
 [![CRAN Status](http://r-pkg.org/badges/version/scape)](https://cran.r-project.org/package=scape)
-[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/scape)](https://cran.r-project.org/package=scape)
+[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/scape)](https://cran.r-project.org/package=scape)
 
 # scape
 
