@@ -39,7 +39,7 @@ importProj <- function(dir, coda=FALSE, quiet=TRUE)
     names(Blist) <- Policies
     B <- Blist
     if(!quiet) cat("list...OK\n")
-    rapply(B, type.convert, how="replace")
+    rapply(B, type.convert, how="replace", as.is=TRUE)
   }
 
   getY <- function(Policies, Years)
@@ -58,7 +58,7 @@ importProj <- function(dir, coda=FALSE, quiet=TRUE)
     names(Ylist) <- Policies
     Y <- Ylist
     if(!quiet) cat("list...OK\n")
-    rapply(Y, type.convert, how="replace")
+    rapply(Y, type.convert, how="replace", as.is=TRUE)
   }
 
   ## 2  Verify that files exist
