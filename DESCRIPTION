@@ -1,6 +1,6 @@
 Package: scape
-Version: 2.3-2
-Date: 2018-05-01
+Version: 2.3.3
+Date: 2020-11-23
 Title: Statistical Catch-at-Age Plotting Environment
 Authors@R: c(person("Arni", "Magnusson", role=c("aut","cre"), email="thisisarni@gmail.com"))
 Imports: stats, utils, coda, Hmisc, lattice
@@ -8,4 +8,4 @@ Suggests: gdata
 LazyData: yes
 Description: Import, plot, and diagnose results from statistical
   catch-at-age models, used in fisheries stock assessment.
-License: GPL (>= 2)
+License: GPL-3
