@@ -45,7 +45,7 @@
 }
 \note{
   The list was imported from the files \file{scape/example/oreo.res},
-  \file{oreo.txt}, and \file{l\_at\_age.dat} using \code{importCol}.
+  \file{oreo.txt}, and \file{l_at_age.dat} using \code{importCol}.
 
   The functions \code{ll} (package \pkg{gdata}) and \code{head} are
   recommended for browsing nested objects, e.g. \code{ll(x.oreo)},
