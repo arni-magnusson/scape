@@ -9,3 +9,4 @@ LazyData: yes
 Description: Import, plot, and diagnose results from statistical
   catch-at-age models, used in fisheries stock assessment.
 License: GPL-3
+URL: https://github.com/arni-magnusson/scape
