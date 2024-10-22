@@ -1,4 +1,4 @@
-# scape 2.3.4 (2024-10-22)
+# scape 2.3.5 (2024-10-22)
 
 * Maintenance release.
 
