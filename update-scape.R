@@ -9,7 +9,6 @@ xmcmc <- importMCMC("~/r/library/scape/example/mcmc", pretty.labels=TRUE, l.choo
 xproj <- importProj("~/r/library/scape/example/mcmc")
 
 dump("x.cod",    "~/git/arni-magnusson/scape/data/x.cod.R")
-dput(x.cod,    "~/git/arni-magnusson/scape/data/x.cod.R")
 dump("x.ling",   "~/git/arni-magnusson/scape/data/x.ling.R")
 dump("x.oreo",   "~/git/arni-magnusson/scape/data/x.oreo.R")
 dump("x.saithe", "~/git/arni-magnusson/scape/data/x.saithe.R")
