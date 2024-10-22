@@ -1,6 +1,6 @@
 Package: scape
-Version: 2.3.3
-Date: 2020-11-23
+Version: 2.3.4
+Date: 2024-10-22
 Title: Statistical Catch-at-Age Plotting Environment
 Authors@R: c(person("Arni", "Magnusson", role=c("aut","cre"), email="thisisarni@gmail.com"))
 Imports: stats, utils, coda, Hmisc, lattice
