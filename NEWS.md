@@ -1,3 +1,10 @@
+# scape 2.3.6 (2026-10-06)
+
+* Maintenance release.
+
+
+
+
 # scape 2.3.5 (2024-10-22)
 
 * Maintenance release.
