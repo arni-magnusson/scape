@@ -1,4 +1,4 @@
-# scape 2.3.6 (2026-10-06)
+# scape 2.3.6 (2026-10-07)
 
 * Maintenance release.
 
@@ -7,7 +7,9 @@
 
 # scape 2.3.5 (2024-10-22)
 
-* Maintenance release.
+* For all est*(), get*(), and plot*() functions, the 'model' object can now be
+  of class "scape" or a plain data frame. In earlier versions, it could only be
+  of class "scape".
 
 
 
